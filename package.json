@@ -1,0 +1,12 @@
+{
+  "name": "cv-studio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static Markdown CV editor for GitHub Pages",
+  "scripts": {
+    "test": "node tests/verify.cjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

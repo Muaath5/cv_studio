@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CV Studio</title>
+<meta name="description" content="A browser-only Markdown CV editor with six styles, LaTeX and PDF export, and local CV history.">
+<meta name="theme-color" content="#254f73">
+<link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+<script defer src="./assets/vendor/pdf-lib.min.js"></script>
+<script defer src="./assets/pdf-fonts.js"></script>
+<script defer src="./assets/app.js"></script>
+<link rel="stylesheet" href="./assets/styles.css">
+
+</head>
+<body>
+<noscript><p>This editor requires JavaScript. Enable JavaScript to import, select, and export your CV.</p></noscript>
+
+<header><div class="brand"><span class="mark" aria-hidden="true">cv</span><strong>CV Studio</strong></div><label class="sr-only" for="cvname">CV name</label><input id="cvname" class="cv-name" value="" placeholder="YYYY-MM-DD" maxlength="100" aria-label="CV name"><div class="toolbar"><button id="sampledownload" class="small" title="Download sample Markdown">Sample .md ↓</button><button id="savecv" class="small" title="Save a new CV snapshot">Save CV</button><button id="download">Download .tex ↓</button><button id="pdfdownload" class="primary" title="Download a searchable PDF generated locally">Download .pdf ↓</button></div></header>
+<details class="historybar" id="historypanel"><summary>My CVs <span id="historycount">0</span></summary><div class="history-list" id="historylist"></div></details>
+<div id="warnings" role="status" hidden></div>
+<main class="workspace">
+<section class="panel"><div class="panelhead"><h2><span class="number">01</span> Markdown</h2><label class="upload" for="file"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m-4-4 4 4 4-4M4 15v5h16v-5"/></svg>Import .md<input id="file" class="sr-only" type="file" accept=".md,.markdown,.txt,text/markdown,text/plain"></label></div><div class="sourcebody"><textarea id="source" spellcheck="false" aria-label="Markdown source" aria-describedby="sourcehint"></textarea><div class="sourceactions"><span id="sourcehint" role="status">Ready</span><div class="toolbar"><button id="sample" class="small" title="Start a new CV">New CV</button><button class="primary" id="parse" title="Parse Markdown and reset selection">Apply</button></div></div></div><details class="help"><summary>Format</summary><pre>## Information
+- Name: Alex Morgan
+- Username: alexmorgan
+- LinkedIn: alex-morgan
+- Email: alex@example.com
+- Website: https://example.com
+
+## Education
+### BSc in Computer Science
+- Organization: Example University
+- Dates: 2022–2026
+- Graduated with distinction.
+
+## Skills
+- Python</pre><p>## Section · ### Entry · - Field: value · - Bullet</p><p>Information, Education, Objective, Volunteering, Awards, Publications, Skills, Projects.</p><p>Username → GitHub. Custom link: [label](https://…). Other inline formatting stays literal. Apply resets selection.</p></details></section>
+<section class="panel"><div class="panelhead"><h2><span class="number">02</span> Content</h2><span class="count" id="count"></span></div><div class="selecttools"><span class="quiet" style="font-size:12px">Include</span><div class="toolbar"><button class="small" id="all">All</button><button class="small" id="none">None</button></div></div><div id="selection"></div></section>
+<section class="panel outputpanel"><div class="panelhead"><h2><span class="number">03</span> Preview</h2><div class="tabs" role="tablist" aria-label="Output"><button id="previewtab" role="tab" aria-selected="true" aria-controls="preview">CV</button><button id="textab" role="tab" aria-selected="false" aria-controls="latex">LaTeX</button></div></div><div class="outputbar"><label>Style<select id="template"><option value="autocv">AutoCV</option><option value="classic">Classic</option><option value="academic">Academic</option><option value="modern">Modern</option><option value="compact">Compact</option><option value="minimal">Minimal</option></select></label><label>Font<select id="font"><option value="roman">Latin Modern Roman</option><option value="sans">Latin Modern Sans</option><option value="mono">Latin Modern Mono</option></select></label></div><div class="outputwrap"><article class="paper" id="preview" role="tabpanel" aria-labelledby="previewtab"></article><textarea id="latex" readonly hidden role="tabpanel" aria-labelledby="textab" aria-label="Generated LaTeX source" spellcheck="false"></textarea></div><div class="outputfoot"><span class="footnote" title="HTML preview and PDF use local renderers. Compile .tex with XeLaTeX or LuaLaTeX for LaTeX pagination.">Local PDF · XeLaTeX source</span><div class="toolbar"><button id="selectedmd" class="small">Selected .md ↓</button><button id="copy" class="small">Copy LaTeX</button></div></div></section>
+</main><div id="toast" role="status" hidden></div>
+
+
+</body></html>
